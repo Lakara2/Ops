@@ -1,0 +1,8 @@
+## commande aws cli
+
+aws cloudformation create-stack --stack-name std21062-stack --template-body file://stack.yaml
+
+aws cloudformation describe-stacks --stack-name std21062-stack
+
+aws ssm get-parameter --name "/std21062/bucket-name"
+aws ssm get-parameter --name "/std21062/bucket-arn"
