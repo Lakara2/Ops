@@ -1,0 +1,24 @@
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: "std21062"
+      AccessControl: "Private"
+      VersioningConfiguration:
+        Status: "Enabled"
+
+  MySSMParameterBucketName:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: "/std21062/bucket-name"
+      Type: "String"
+      Value: !Ref MyS3Bucket
+      Description: "Name of the new S3 bucket"
+
+  MySSMParameterBucketARN:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: "/std21062/bucket-arn"
+      Type: "String"
+      Value: !GetAtt MyS3Bucket.Arn
+      Description: "ARN of the new S3 bucket"
